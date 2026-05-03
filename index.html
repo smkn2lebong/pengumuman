@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan SMK Negeri 2 Lebong</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transition: all 0.3s ease;
+        }
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(220, 38, 38, 0.5);
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transition: all 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-shake { animation: shake 0.3s ease-in-out; }
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .rule-item {
+            transition: all 0.3s ease;
+        }
+        .rule-item:hover {
+            background: rgba(239, 68, 68, 0.1);
+            transform: translateX(5px);
+        }
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .warning-text {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="inline-block p-4 rounded-full bg-blue-500/20 mb-4">
+                <svg class="w-12 h-12 text-blue-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Pengumuman Kelulusan</h1>
+            <p class="text-xl text-gray-300">SMK Negeri 2 Lebong</p>
+            <p class="text-gray-400 mt-2">Tahun Ajaran 2025/2026</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="glass-card p-6 md:p-8 max-w-2xl mx-auto">
+            <!-- Countdown Section -->
+            <div id="countdownSection" class="mb-8 text-center">
+                <h2 class="text-2xl font-semibold mb-4">⏰ Jadwal Pengumuman</h2>
+                <div class="bg-blue-500/10 rounded-xl p-4 border border-blue-500/30">
+                    <p class="text-blue-300 mb-3">Pengumuman akan dibuka pada:</p>
+                    <p class="text-2xl font-bold text-white mb-4">Senin, 4 Mei 2026 | 18:00 WIB</p>
+                    <div class="grid grid-cols-4 gap-2 max-w-md mx-auto">
+                        <div class="text-center">
+                            <div id="days" class="countdown-number text-3xl">00</div>
+                            <div class="text-xs text-gray-400">Hari</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="hours" class="countdown-number text-3xl">00</div>
+                            <div class="text-xs text-gray-400">Jam</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="minutes" class="countdown-number text-3xl">00</div>
+                            <div class="text-xs text-gray-400">Menit</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="seconds" class="countdown-number text-3xl">00</div>
+                            <div class="text-xs text-gray-400">Detik</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Konten Utama (akan tampil setelah setuju aturan) -->
+            <div id="mainContent" style="display: none;">
+                <!-- Sambutan -->
+                <div id="sambutanSection" class="mb-8 text-center">
+                    <h2 class="text-2xl font-semibold mb-3">Sambutan Kepala Sekolah</h2>
+                    <p class="text-gray-300 leading-relaxed text-justify">
+                        Assalamu'alaikum Warahmatullahi Wabarakatuh. Segala puji bagi Allah SWT, dengan rasa syukur kami umumkan kelulusan siswa-siswi SMK Negeri 2 Lebong Tahun Ajaran 2025/2026. 
+                        Selamat kepada seluruh siswa yang telah menyelesaikan pendidikan. Teruslah belajar dan berkarya untuk masa depan yang gemilang.
+                    </p>
+                    <p class="text-blue-300 mt-3">— Drs. H. Ahmad Fauzi, M.Pd</p>
+                </div>
+
+                <!-- Form Pencarian -->
+                <div id="formSection">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nomor Induk Siswa Nasional (NISN)</label>
+                            <div class="flex gap-3">
+                                <input type="text" id="nisnInput" placeholder="Masukkan NISN anda" 
+                                       class="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+                                <button onclick="checkGraduation()" id="checkBtn" class="btn-primary px-6 py-3 rounded-xl font-semibold">
+                                    Cek Kelulusan
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">* Masukkan NISN dengan benar | Ketik "ADMIN" untuk semua data</p>
+                        </div>
+                        <div id="resultArea" class="mt-6"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pesan Belum Dibuka -->
+            <div id="closedMessage" class="text-center">
+                <div class="bg-yellow-500/10 rounded-xl p-6 border border-yellow-500/30">
+                    <svg class="w-16 h-16 text-yellow-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-xl font-semibold mb-2">Pengumuman Belum Dibuka</h3>
+                    <p class="text-gray-300">Silakan cek kembali pada tanggal yang telah ditentukan.</p>
+                    <p class="text-blue-300 mt-2 text-sm">Senin, 4 Mei 2026 Pukul 18:00 WIB</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-gray-500 text-sm mt-8">
+            © 2026 SMK Negeri 2 Lebong - All Rights Reserved
+        </div>
+    </div>
+
+    <!-- MODAL ATURAN KELULUSAN -->
+    <div id="rulesModal" class="modal-backdrop">
+        <div class="glass-card max-w-2xl mx-4 p-6 md:p-8 animate-fade-in max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <div class="inline-block p-3 rounded-full bg-red-500/20 mb-3">
+                    <svg class="w-12 h-12 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold warning-text">⚠️ PERHATIAN PENTING ⚠️</h2>
+                <p class="text-gray-300 mt-2">Baca dan pahami aturan berikut sebelum melanjutkan</p>
+            </div>
+
+            <div class="space-y-4 mb-6">
+                <div class="rule-item bg-red-500/5 border border-red-500/30 rounded-xl p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-red-400">🚫 LARANGAN KERAS!</h3>
+                            <p class="text-sm text-gray-300">Dilarang melakukan konvoi, corat-coret baju/body motor, dan aksi anarkis di jalan raya.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-item bg-red-500/5 border border-red-500/30 rounded-xl p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-red-400">💰 SANKSI TEGAS!</h3>
+                            <p class="text-sm text-gray-300">Setiap pelanggaran akan dikenakan sanksi <span class="font-bold text-yellow-400">PENUNDAAN/PENCABUTAN IJAZAH</span> dan tidak akan diberikan Surat Kelulusan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-item bg-green-500/5 border border-green-500/30 rounded-xl p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-green-400">✅ KETENTUAN PENGAMBILAN IJAZAH</h3>
+                            <p class="text-sm text-gray-300">Mengenakan <span class="font-bold">PAKAIAN SEKOLAH LENGKAP DAN RAPI</span> saat mengambil Surat Kelulusan/Ijazah.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-item bg-blue-500/5 border border-blue-500/30 rounded-xl p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-blue-400">📋 JADWAL PENGAMBILAN</h3>
+                            <p class="text-sm text-gray-300">Pengambilan Surat Kelulusan/Ijazah akan dijadwalkan setelah pengumuman. Pantau terus informasi dari sekolah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 pt-4 mb-4">
+                <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="agreeCheckbox" class="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 focus:ring-blue-500">
+                    <span class="text-sm text-gray-300">
+                        Saya telah <span class="font-bold text-yellow-400">MEMBACA dan MEMAHAMI</span> seluruh aturan di atas. 
+                        Saya <span class="font-bold text-red-400">BERSEDIA MENERIMA SANKSI</span> apabila melanggar ketentuan yang telah ditetapkan sekolah.
+                    </span>
+                </label>
+            </div>
+
+            <div class="flex gap-3">
+                <button id="agreeBtn" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                    ✅ Saya Setuju & Lanjutkan
+                </button>
+                <button id="disagreeBtn" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-xl transition-all">
+                    ❌ Tidak Setuju
+                </button>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-4">*Dengan menyetujui, anda telah mengikatkan diri pada peraturan sekolah</p>
+        </div>
+    </div>
+
+    <!-- Load data siswa -->
+    <script src="data-siswa.js"></script>
+    
+    <script>
+        // TANGGAL PENGUMUMAN: 4 MEI 2026 JAM 18:00 WIB
+        const ANNOUNCEMENT_DATE = new Date(2026, 4, 4, 11, 0, 0);
+        
+        let studentsList = [];
+        let isOpen = false;
+        let hasAgreed = false;
+
+        // Cek apakah sudah pernah setuju aturan sebelumnya
+        function checkPreviousAgreement() {
+            const agreed = localStorage.getItem('graduation_rules_agreed');
+            if (agreed === 'true') {
+                hasAgreed = true;
+                closeModal();
+            }
+        }
+
+        // Setup modal rules
+        function setupRulesModal() {
+            const modal = document.getElementById('rulesModal');
+            const agreeCheckbox = document.getElementById('agreeCheckbox');
+            const agreeBtn = document.getElementById('agreeBtn');
+            const disagreeBtn = document.getElementById('disagreeBtn');
+
+            // Enable/disable button based on checkbox
+            agreeCheckbox.addEventListener('change', () => {
+                agreeBtn.disabled = !agreeCheckbox.checked;
+            });
+
+            // Setuju
+            agreeBtn.addEventListener('click', () => {
+                if (agreeCheckbox.checked) {
+                    hasAgreed = true;
+                    localStorage.setItem('graduation_rules_agreed', 'true');
+                    closeModal();
+                    // Tampilkan konten utama
+                    if (isOpen) {
+                        showMainContent();
+                    }
+                } else {
+                    agreeCheckbox.classList.add('animate-shake');
+                    setTimeout(() => agreeCheckbox.classList.remove('animate-shake'), 300);
+                }
+            });
+
+            // Tidak setuju - redirect ke halaman peringatan
+            disagreeBtn.addEventListener('click', () => {
+                modal.innerHTML = `
+                    <div class="glass-card max-w-md mx-4 p-6 text-center animate-fade-in">
+                        <div class="inline-block p-3 rounded-full bg-red-500/20 mb-3">
+                            <svg class="w-16 h-16 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-red-400 mb-3">Anda Tidak Dapat Melanjutkan</h2>
+                        <p class="text-gray-300 mb-4">Karena tidak menyetujui aturan yang berlaku, anda tidak dapat mengakses pengumuman kelulusan.</p>
+                        <button onclick="window.location.reload()" class="btn-warning px-6 py-2 rounded-lg font-semibold">
+                            🔄 Muat Ulang Halaman
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('rulesModal');
+            modal.style.display = 'none';
+        }
+
+        function showMainContent() {
+            document.getElementById('mainContent').style.display = 'block';
+        }
+
+        // Cek apakah pengumuman sudah bisa diakses
+        function checkAnnouncementStatus() {
+            const now = new Date();
+            isOpen = now >= ANNOUNCEMENT_DATE;
+            
+            const countdownSection = document.getElementById('countdownSection');
+            const closedMessage = document.getElementById('closedMessage');
+            
+            if (isOpen) {
+                countdownSection.style.display = 'none';
+                closedMessage.style.display = 'none';
+                if (hasAgreed) {
+                    showMainContent();
+                }
+            } else {
+                countdownSection.style.display = 'block';
+                closedMessage.style.display = 'block';
+                document.getElementById('mainContent').style.display = 'none';
+                updateCountdown();
+            }
+        }
+
+        // Update countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const diff = ANNOUNCEMENT_DATE - now;
+            
+            if (diff <= 0) {
+                checkAnnouncementStatus();
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Fungsi cek kelulusan
+        function checkGraduation() {
+            if (!isOpen) {
+                showResult('error', '⚠️ Pengumuman kelulusan belum dibuka! Silakan cek kembali pada tanggal 4 Mei 2026 pukul 18:00 WIB.');
+                return;
+            }
+            
+            const input = document.getElementById('nisnInput').value.trim();
+            const resultArea = document.getElementById('resultArea');
+            
+            if (!input) {
+                showResult('error', 'Harap masukkan NISN terlebih dahulu!');
+                return;
+            }
+            
+            if (input.toUpperCase() === 'ADMIN') {
+                showAdminPanel();
+                return;
+            }
+            
+            const student = studentsList.find(s => s.nisn === input);
+            
+            if (!student) {
+                showResult('error', 'NISN tidak ditemukan. Pastikan NISN yang dimasukkan benar.');
+                return;
+            }
+            
+            showGraduationResult(student);
+        }
+        
+        function showGraduationResult(student) {
+            const isPassed = student.status === 'LULUS';
+            const resultArea = document.getElementById('resultArea');
+            
+            // Peringatan tambahan untuk yang lulus
+            const additionalWarning = isPassed ? `
+                <div class="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                    <div class="flex items-center gap-2 text-sm text-red-300">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <span><span class="font-bold">⚠️ PERINGATAN PENTING:</span> Ijazah/Surat Kelulusan hanya akan diberikan jika tidak melakukan konvoi/corat-coret. Wajib berpakaian sekolah rapi saat pengambilan!</span>
+                    </div>
+                </div>
+            ` : '';
+            
+            const html = `
+                <div class="animate-fade-in">
+                    <div class="glass-card p-6 text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 ${isPassed ? 'bg-green-500/20' : 'bg-red-500/20'}">
+                            <svg class="w-10 h-10 ${isPassed ? 'text-green-400' : 'text-red-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="${isPassed ? 'M5 13l4 4L19 7' : 'M6 18L18 6M6 6l12 12'}"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">${student.nama}</h3>
+                        <p class="text-gray-400 mb-3">NISN: ${student.nisn}</p>
+                        <p class="text-gray-300 mb-4">Jurusan: ${student.jurusan}</p>
+                        <div class="inline-block px-6 py-2 rounded-full text-lg font-bold ${isPassed ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}">
+                            ${student.status}
+                        </div>
+                        ${isPassed ? '<p class="text-green-400 mt-4">🎉 Selamat! Anda dinyatakan LULUS. 🎉</p>' : '<p class="text-red-400 mt-4">Tetap semangat! Masih ada kesempatan lain.</p>'}
+                        ${additionalWarning}
+                    </div>
+                </div>
+            `;
+            
+            resultArea.innerHTML = html;
+            if (isPassed) triggerConfetti();
+        }
+        
+        function showAdminPanel() {
+            const resultArea = document.getElementById('resultArea');
+            let tableHtml = `
+                <div class="glass-card p-4 animate-fade-in">
+                    <h3 class="text-xl font-bold mb-3 text-center">📋 Data Semua Siswa (${studentsList.length} siswa)</h3>
+                    <div class="overflow-x-auto max-h-96 overflow-y-auto">
+                        <table class="w-full text-sm">
+                            <thead class="sticky top-0 bg-gray-900">
+                                <tr class="border-b border-white/20">
+                                    <th class="px-3 py-2 text-left">No</th>
+                                    <th class="px-3 py-2 text-left">NISN</th>
+                                    <th class="px-3 py-2 text-left">Nama</th>
+                                    <th class="px-3 py-2 text-left">Jurusan</th>
+                                    <th class="px-3 py-2 text-left">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+            
+            studentsList.forEach((student, index) => {
+                tableHtml += `
+                    <tr class="border-b border-white/10 hover:bg-white/5">
+                        <td class="px-3 py-2">${index + 1}</td>
+                        <td class="px-3 py-2">${student.nisn}</td>
+                        <td class="px-3 py-2">${student.nama}</td>
+                        <td class="px-3 py-2">${student.jurusan}</td>
+                        <td class="px-3 py-2">
+                            <span class="px-2 py-1 rounded-full text-xs ${student.status === 'LULUS' ? 'bg-green-500' : 'bg-red-500'}">
+                                ${student.status}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHtml += `</tbody> </table> </div> </div>`;
+            resultArea.innerHTML = tableHtml;
+        }
+        
+        function showResult(type, message) {
+            const resultArea = document.getElementById('resultArea');
+            const isError = type === 'error';
+            const html = `
+                <div class="glass-card p-4 text-center animate-fade-in">
+                    <div class="flex items-center justify-center mb-2">
+                        <svg class="w-8 h-8 ${isError ? 'text-red-400' : 'text-yellow-400'}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="${isError ? 'M12 8v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z' : 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z'}"></path>
+                        </svg>
+                    </div>
+                    <p class="text-gray-300">${message}</p>
+                </div>
+            `;
+            resultArea.innerHTML = html;
+        }
+        
+        function triggerConfetti() {
+            const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '9999';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.style.transform = `translateY(${window.innerHeight + 20}px) rotate(${Math.random() * 360}deg)`;
+                    confetti.style.transition = 'transform 2s ease-out';
+                }, 10);
+                setTimeout(() => confetti.remove(), 2000);
+            }
+        }
+        
+        // Load data siswa
+        if (typeof studentsData !== 'undefined') {
+            studentsList = studentsData;
+            console.log(`✅ Data siswa berhasil dimuat: ${studentsList.length} siswa`);
+        } else {
+            console.error('❌ Gagal memuat data siswa');
+            studentsList = [];
+        }
+        
+        // Event listener untuk tombol Enter
+        document.addEventListener('DOMContentLoaded', () => {
+            checkPreviousAgreement();
+            setupRulesModal();
+            checkAnnouncementStatus();
+            
+            const nisnInput = document.getElementById('nisnInput');
+            if (nisnInput) {
+                nisnInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') checkGraduation();
+                });
+            }
+        });
+        
+        // Update countdown setiap detik
+        setInterval(() => {
+            if (!isOpen) {
+                updateCountdown();
+                checkAnnouncementStatus();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
