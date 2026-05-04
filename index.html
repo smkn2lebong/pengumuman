@@ -272,8 +272,16 @@
     <script src="data-siswa.js"></script>
     
     <script>
-        // TANGGAL PENGUMUMAN: 4 MEI 2026 JAM 18:00 WIB
-        const ANNOUNCEMENT_DATE = new Date(2026, 4, 4, 11, 0, 0);
+        // ==============================================
+        // PERBAIKAN UTAMA: TANGGAL PENGUMUMAN
+        // 4 MEI 2026 JAM 18:00 WIB
+        // ==============================================
+        const ANNOUNCEMENT_DATE = new Date(2026, 4, 4, 18, 0, 0);
+        //                                 ^  ^  ^  ^
+        //                                 |  |  |  jam 18:00 (sore)
+        //                                 |  |  tanggal 4
+        //                                 |  bulan Mei (4 = Mei)
+        //                                 tahun 2026
         
         let studentsList = [];
         let isOpen = false;
@@ -285,6 +293,10 @@
             if (agreed === 'true') {
                 hasAgreed = true;
                 closeModal();
+                // Jika pengumuman sudah dibuka, tampilkan konten
+                if (isOpen) {
+                    showMainContent();
+                }
             }
         }
 
@@ -493,7 +505,7 @@
                 `;
             });
             
-            tableHtml += `</tbody> </table> </div> </div>`;
+            tableHtml += `</tbody></table></div></div>`;
             resultArea.innerHTML = tableHtml;
         }
         
